@@ -44,17 +44,21 @@ def main():
         key_lst = pg.key.get_pressed()
         up, down = key_lst[pg.K_UP], key_lst[pg.K_DOWN]
         right, left = key_lst[pg.K_RIGHT], key_lst[pg.K_LEFT]
-        koukaton_rect.move_ip(
-            right - left, down - up
-        )
+        dx = right - left
+        dy = down - up
+
+        if key_lst[pg.K_RIGHT]:
+            dx += 1
+            kokaton_speed = 2
+        else:
+            dx -= 1
+            kokaton_speed = 1
+
+        # こうかとんを計算した位置に移動
+        koukaton_rect.move_ip(dx, dy)
 
         # こうかとんが画面からはみ出ないように制限
         koukaton_rect.clamp_ip(screen_rect)
-
-        if key_lst[pg.K_RIGHT]:
-            kokaton_speed = 3
-        else:
-            kokaton_speed = 1
 
         pg.display.update()
         tmr += kokaton_speed
@@ -65,5 +69,4 @@ if __name__ == "__main__":
     pg.init()
     main()
     pg.quit()
-    sys.exit()
     sys.exit()
