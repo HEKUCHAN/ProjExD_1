@@ -43,13 +43,13 @@ def main():
 
         key_lst = pg.key.get_pressed()
         up, down = key_lst[pg.K_UP], key_lst[pg.K_DOWN]
-        koukaton_rect.move_ip(0, down - up)
+        right, left = key_lst[pg.K_RIGHT], key_lst[pg.K_LEFT]
+        koukaton_rect.move_ip(
+            right - left, down - up
+        )
 
         # こうかとんが画面からはみ出ないように制限
-        if koukaton_rect.top < screen_rect.top:
-            koukaton_rect.top = screen_rect.top
-        if koukaton_rect.bottom > screen_rect.bottom:
-            koukaton_rect.bottom = screen_rect.bottom
+        koukaton_rect.clamp_ip(screen_rect)
 
         if key_lst[pg.K_RIGHT]:
             kokaton_speed = 3
