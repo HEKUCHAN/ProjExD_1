@@ -22,6 +22,7 @@ def main():
 
         bg_img_x = -(tmr)
         screen.blit(bg_img, [bg_img_x, 0])
+        screen.blit(bg_img, [bg_img_x + 1600, 0])
         screen.blit(kokaton_img, [300, 200])
 
         pg.display.update()
