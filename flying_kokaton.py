@@ -24,7 +24,7 @@ def main():
     # 中央にこうかとんを配置
     koukaton_rect.center = screen_rect.center
 
-    # こうかとんのすすむスピード
+    # 背景の流れるスピード
     bg_speed = 1
 
     tmr = 0
@@ -49,6 +49,9 @@ def main():
 
         if key_lst[pg.K_RIGHT]:
             dx += 1
+            bg_speed = 2
+        elif key_lst[pg.K_LEFT]:
+            dx -= 1
             bg_speed = 2
         else:
             dx -= 1
