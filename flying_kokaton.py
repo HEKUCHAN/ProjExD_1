@@ -25,7 +25,7 @@ def main():
     koukaton_rect.center = screen_rect.center
 
     # こうかとんのすすむスピード
-    kokaton_speed = 1
+    bg_speed = 1
 
     tmr = 0
     while True:
@@ -49,10 +49,10 @@ def main():
 
         if key_lst[pg.K_RIGHT]:
             dx += 1
-            kokaton_speed = 2
+            bg_speed = 2
         else:
             dx -= 1
-            kokaton_speed = 1
+            bg_speed = 1
 
         # こうかとんを計算した位置に移動
         koukaton_rect.move_ip(dx, dy)
@@ -61,7 +61,7 @@ def main():
         koukaton_rect.clamp_ip(screen_rect)
 
         pg.display.update()
-        tmr += kokaton_speed
+        tmr += bg_speed
         clock.tick(200)
 
 
