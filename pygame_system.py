@@ -19,7 +19,8 @@ def main():
     tmr = 0
     while True:
         for event in pg.event.get():
-            if event.type == pg.QUIT: return
+            if event.type == pg.QUIT:
+                return
 
         txt = font.render(str(tmr), True, (255, 255, 255))
         screen.fill((50, 50, 50))
