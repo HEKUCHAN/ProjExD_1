@@ -11,8 +11,8 @@ def main():
     screen = pg.display.set_mode((800, 600))
     clock = pg.time.Clock()
     bg_img = pg.image.load("fig/pg_bg.jpg")
-    kokaton_img = pg.image.load("fig/3.png")
-    kokaton_img = pg.transform.flip(kokaton_img, True, False)
+    fliped_bg_img = pg.transform.flip(bg_img, True, False)
+    kokaton_img = pg.transform.flip(pg.image.load("fig/3.png"), True, False)
 
     tmr = 0
     while True:
@@ -20,9 +20,12 @@ def main():
             if event.type == pg.QUIT:
                 return
 
-        bg_img_x = -(tmr)
-        screen.blit(bg_img, [bg_img_x, 0])
-        screen.blit(bg_img, [bg_img_x + 1600, 0])
+        x_offset = -(tmr % bg_img.get_width() * 2)
+
+        screen.blit(bg_img, [x_offset, 0])
+        screen.blit(fliped_bg_img, [x_offset + bg_img.get_width(), 0])
+        screen.blit(bg_img, [x_offset + bg_img.get_width() * 2, 0])
+
         screen.blit(kokaton_img, [300, 200])
 
         pg.display.update()
